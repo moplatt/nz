@@ -2,7 +2,6 @@
 Script für die Neuseelandreise
 */
 
-
 let stop = {
     nr: 21,
     title: "Steward Island",
@@ -123,7 +122,7 @@ const STOPS = [
         title: "Wanaka",
         user: "lizzie2911",
         lat: -44.7,
-        lon: 169.15,
+        lng: 169.15,
         zoom: 13,
     },
     {
@@ -203,11 +202,6 @@ const STOPS = [
 
 ];
 
-
-for (let i=0; i<STOPS.length; i++) {
-    console.log(STOPS[i]);
-}
-
 // Karte initialisieren
 let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
 //Hintergrundkarte definieren
@@ -216,7 +210,14 @@ let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         // Marker zeichnen
+        // loop über Etappen 
+        for (let i=0; i<STOPS.length; i++) {
+            console.log(STOPS[i]);
+            let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+        }
+        
         let marker = L.marker([stop.lat, stop.lng]).addTo(map);
+
         // Popup definieren und öffnen
         marker.bindPopup(`
             <h2><b>${stop.title}!</b></h2>
