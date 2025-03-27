@@ -203,39 +203,37 @@ const STOPS = [
 ];
 
 // Karte initialisieren
-let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
+let map = L.map('map');
 //Hintergrundkarte definieren
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-        // Marker zeichnen
-        // loop über Etappen 
-        for (let i=0; i<STOPS.length; i++) {
-            console.log(STOPS[i]);
-            let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
-                    // Popup definieren und öffnen
-        marker.bindPopup(`
+// Marker zeichnen
+// loop über Etappen 
+for (let i = 0; i < STOPS.length; i++) {
+    console.log(STOPS[i]);
+    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+
+    // Popup definieren
+    marker.bindPopup(`
             <h2><b>${STOPS[i].title}!</b></h2>
             <br> 
             <ul>
                 <li>geogr. Länge: ${STOPS[i].lat.toFixed(5)}°</li>
                 <li>geogr. Breite ${STOPS[i].lng.toFixed(5)}°</li>
             </ul>
-        `).openPopup();
-        }
-        
-        // let marker = L.marker([stop.lat, stop.lng]).addTo(map);
+        `);
 
-        // // Popup definieren und öffnen
-        // marker.bindPopup(`
-        //     <h2><b>${stop.title}!</b></h2>
-        //     <br> 
-        //     <ul>
-        //         <li>geogr. Länge: ${stop.lat.toFixed(5)}°</li>
-        //         <li>geogr. Breite ${stop.lng.toFixed(5)}°</li>
-        //     </ul>
-        // `).openPopup();
+    //auf eigene Etappe blicken und Popup öffnen
+    if (STOPS[i].user == "moplatt") {
+        console.log(STOPS[i].user, " = meine Etappe ;)")
+        map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
+        marker.openPopup();
+    }
+}
+
+
 
 
