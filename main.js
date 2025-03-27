@@ -4,7 +4,16 @@ Script für die Neuseelandreise
 
 let lat = -46.98;
 let lon = 167.88;
-let zoom = 9
+let zoom = 9;
+
+let stop = {
+    nr: 22,
+    titel: "Steward Island",
+    user: "moplatt",
+    lat: lat,
+    lng: lon,
+    zoom: zoom,
+};
 
 // Karte initialisieren
 let map = L.map('map').setView([lat, lon], zoom);
@@ -24,3 +33,5 @@ let map = L.map('map').setView([lat, lon], zoom);
                 <li>geogr. Breite ${lon.toFixed(5)}°</li>
             </ul>
         `).openPopup();
+
+
