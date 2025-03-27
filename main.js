@@ -79,11 +79,11 @@ const STOPS = [
     },
     {
         nr: 9,
-        title: "Konstanz",
+        title: "Wellington",
         user: "cs4151",
-        lat: 47.6633,
-        lng: 9.175,
-        zoom: 14,
+        lat: -41.2875,
+        lng: 174.776111,
+        zoom: 12,
     },
     {
         title: "Picton",
@@ -214,18 +214,28 @@ let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
         for (let i=0; i<STOPS.length; i++) {
             console.log(STOPS[i]);
             let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
-        }
-        
-        let marker = L.marker([stop.lat, stop.lng]).addTo(map);
 
-        // Popup definieren und öffnen
+                    // Popup definieren und öffnen
         marker.bindPopup(`
-            <h2><b>${stop.title}!</b></h2>
+            <h2><b>${STOPS[i].title}!</b></h2>
             <br> 
             <ul>
-                <li>geogr. Länge: ${stop.lat.toFixed(5)}°</li>
-                <li>geogr. Breite ${stop.lng.toFixed(5)}°</li>
+                <li>geogr. Länge: ${STOPS[i].lat.toFixed(5)}°</li>
+                <li>geogr. Breite ${STOPS[i].lng.toFixed(5)}°</li>
             </ul>
         `).openPopup();
+        }
+        
+        // let marker = L.marker([stop.lat, stop.lng]).addTo(map);
+
+        // // Popup definieren und öffnen
+        // marker.bindPopup(`
+        //     <h2><b>${stop.title}!</b></h2>
+        //     <br> 
+        //     <ul>
+        //         <li>geogr. Länge: ${stop.lat.toFixed(5)}°</li>
+        //         <li>geogr. Breite ${stop.lng.toFixed(5)}°</li>
+        //     </ul>
+        // `).openPopup();
 
 
