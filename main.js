@@ -40,7 +40,7 @@ const STOPS = [
     {
         nr: 4,
         title: "Cormandel Peninsula",
-        usr: "Gregorysprenger2001",
+        user: "Gregorysprenger2001",
         lat: -37.882778,
         lng: 175.636667,
         zoom: 11,
@@ -213,7 +213,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Marker zeichnen
 // loop über Etappen 
 for (let i = 0; i < STOPS.length; i++) {
-    console.log(STOPS[i]);
+    // console.log(STOPS[i]);
     let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
 
     // Popup definieren
@@ -243,6 +243,13 @@ for (let i = 0; i < STOPS.length; i++) {
     document.querySelector("#pulldown select").appendChild(option);
 }
 
+// auf Änderungen beim Pulldown reagieren
+document.querySelector("#pulldown select").onchange = function(evt) {
+    let url = `https://${evt.target.value}.github.io/nz`;
+    // console.log(url);
+    // console.log(evt.target.value);
+    window.location = url;
+}
 
 
 
