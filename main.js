@@ -7,7 +7,7 @@ let lon = 167.88;
 let zoom = 9;
 
 let stop = {
-    nr: 22,
+    nr: 21,
     titel: "Steward Island",
     user: "moplatt",
     lat: lat,
