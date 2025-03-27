@@ -17,7 +17,10 @@ let map = L.map('map').setView([lat, lon], zoom);
         let marker = L.marker([lat, lon]).addTo(map);
         // Popup definieren und öffnen
         marker.bindPopup(`
-            <b>Hello World!</b>
+            <h2><b>Steward Island!</b></h2>
             <br> 
-            I am a popup!
+            <ul>
+                <li>geogr. Länge: ${lat.toFixed(5)}°</li>
+                <li>geogr. Breite ${lon.toFixed(5)}°</li>
+            </ul>
         `).openPopup();
