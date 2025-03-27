@@ -237,6 +237,9 @@ for (let i = 0; i < STOPS.length; i++) {
     let option = document.createElement("option");
     option.value = STOPS[i].user;
     option.text = STOPS[i].title;
+    if (STOPS[i].user == "moplatt") {
+        option.selected = true;
+    }
     document.querySelector("#pulldown select").appendChild(option);
 }
 
