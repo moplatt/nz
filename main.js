@@ -6,8 +6,8 @@ let stop = {
     nr: 21,
     title: "Steward Island",
     user: "moplatt",
-    lat: -46.98,
-    lng: 167.88,
+    lat: -46.98305,
+    lng: 167.88527,
     zoom: 9,
 };
 
