@@ -2,15 +2,6 @@
 Script für die Neuseelandreise
 */
 
-let stop = {
-    nr: 21,
-    title: "Steward Island",
-    user: "moplatt",
-    lat: -46.98305,
-    lng: 167.88527,
-    zoom: 9,
-};
-
 const STOPS = [
 
     {
@@ -204,10 +195,19 @@ const STOPS = [
 
 // Karte initialisieren
 let map = L.map('map');
-//Hintergrundkarte definieren
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+
+// Overlays definieren
+let overlays = {
+    marker: L.featureGroup().addTo(map), // .addto(map) um layer default zu checken
+};
+
+// Layercontrol
+L.control.layers({
+    "OpenStreetMap Mapnik": L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map),
+    "OpenTopoMap": L.tileLayer.provider('OpenTopoMap'),
+    "Esri WorldImagery": L.tileLayer.provider('Esri.WorldImagery'),
+}, {
+    "Lieblingsorte": overlays.marker, // .addto(map) um layer default zu checken
 }).addTo(map);
 
 // Maßstab
@@ -219,7 +219,7 @@ L.control.scale({
 // loop über Etappen 
 for (let i = 0; i < STOPS.length; i++) {
     // console.log(STOPS[i]);
-    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(overlays.marker);
 
     // Popup definieren
     marker.bindPopup(`
